@@ -1,4 +1,4 @@
-//Jenkins pipeline script
+//Jenkins pipeline scripty
 //Groovy script 
 
 node{
