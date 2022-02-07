@@ -2,11 +2,12 @@
 //Groovy script 
 
 node{
-  def mavenHome = tool name: 'maven3.8.1'
+  def mavenHome = tool name: 'Maven3.8.1'
+  
   stage('CodeClone') {
-    git credentialsId: 'git-credentials', url: 'https://github.com/mylandmarktechs/web'
+    git credentialsId: 'gitcre', url: 'https://github.com/Oriyomi-Johnson/maven-web-apps'
   }
-  stage('mavenBuild') {
+    stage('mavenBuild') {
     sh "${mavenHome}/bin/mvn clean package"
   }
 /*
@@ -24,10 +25,11 @@ Landmark Technologies''', recipientProviders: [developers()], subject: 'status o
     sh "${mavenHome}/bin/mvn deploy"
     //mvn deploy  are uploaded in to nexus
   }
-
-  stage('DeployTomcat') {
-    deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://34.239.155.145:7000/')], contextPath: null, war: 'target/*war'
+*/
+   {
+    deploy adapters: [tomcat9(credentialsId: 'Tom', path: '', url: 'http://3.17.152.65:8080/')], contextPath: null, war: 'target/*war'
   }
+  /*
   stage('emailDeployIssues') {
     emailext body: '''Thanks
 
